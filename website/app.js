@@ -10,17 +10,14 @@ document.getElementById('generate').addEventListener('click', processInfo)
 const zipCode = document.getElementById("zip").value;
 const userInput = document.getElementById("feelings").value;
 
+//Once a click occurs, this function will call and get the weather info from the API//
 function processInfo(e){
     const zipCode= document.getElementById('zip').value
     const userInput = document.getElementById("feelings").value;
-    getWeather(baseURL, zipCode, apiKey)
-    .then(function(data){
-        // console.log(data);
-        // console.log(data.main.temp);
-        // console.log(userInput);
-        // console.log(newDate);//working through this line// 
+    getWeather(baseURL, zipCode, apiKey)//get weather data//
+    .then(function(data){//then post the data to the server//
         postData('/addData', {temp:data.main.temp, date:newDate, input:userInput});
-        updateUI()
+        updateUI()//this runs and updates the UI!//
     });
 };
 
@@ -65,7 +62,7 @@ const updateUI= async(url ='')=>{
             const allData = await request.json()
             console.log(allData);
             document.getElementById('date').innerHTML = allData[0].date;
-            document.getElementById('temp').innerHTML = allData[0].temp;
+            document.getElementById('temp').innerHTML = allData[0].temp + '\u00B0 F';
             document.getElementById('content').innerHTML = allData[0].userInput;
         }catch(error){
             console.log('error', error);
