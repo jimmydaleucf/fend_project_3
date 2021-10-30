@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-
+const projectData = {}
 
 // Express to run server and routes
 const express = require("express");
@@ -14,6 +14,7 @@ const app = express();
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 // Cors for cross origin allowance
 app.use(cors());
 // Initialize the main project folder
@@ -26,15 +27,15 @@ function listening() {
   console.log(`server up and running on localhost:${port}`); // Callback to debug//
 }
 const appData = {};
-const projectData = [];
+const weatherData = [];
 // Initialize all route with a callback function//
 app.get("/all", getData)
 
 
 // Callback function to complete GET '/all'//
 function getData(req, res) {
-  res.send(projectData);
-  console.log(projectData);
+  res.send(weatherData);
+  console.log(weatherData);
   console.log('HelloWorld') 
 };
 
@@ -50,7 +51,7 @@ function addData(req,res) {
     }  
     console.log(newEntry);
 
-    projectData.push(newEntry)
-    res.send(projectData)
-//   console.log(projectData)
+    weatherData.push(newEntry)
+    res.send(weatherData)
+//   console.log(weatherData)
 }

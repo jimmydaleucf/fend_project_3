@@ -61,14 +61,14 @@ const postData = async (url='', data = {}) => {
 }
 const updateUI= async(url ='')=>{
     const request = await fetch('/all')
-    try{
-        const allData = await request.json()
-        console.log(allData);
-        document.getElementById('date').innerHTML = alldata[0].date;
-        document.getElementById('temp').innerHTML = alldata[0].temp;
-        document.getElementById('content').innerHTML = alldata[0].userInput;
-    }catch(error){
-        console.log('error', error);
+        try{
+            const allData = await request.json()
+            console.log(allData);
+            document.getElementById('date').innerHTML = allData[0].date;
+            document.getElementById('temp').innerHTML = allData[0].temp;
+            document.getElementById('content').innerHTML = allData[0].userInput;
+        }catch(error){
+            console.log('error', error);
     }
 
 }
