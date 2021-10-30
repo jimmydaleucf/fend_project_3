@@ -72,4 +72,5 @@ const updateUI= async(url ='')=>{
 
 // // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let newDate = months[d.getMonth()]+'.'+ d.getDate()+'.'+ d.getFullYear();
