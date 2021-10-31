@@ -1,6 +1,5 @@
 /* Global Variables */
 
-const endpoint = {};
 
 let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '868d60b0f024eeb9e37e6857f607fb26';
@@ -28,7 +27,7 @@ const getWeather = async (baseURL, zipCode, apiKey) =>{
     const res = await fetch(baseURL+zipCode+'&units=imperial&appid='+apiKey)
     try {
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         return data;
     }catch (error){
         console.log('error', error);
@@ -37,7 +36,6 @@ const getWeather = async (baseURL, zipCode, apiKey) =>{
 
 const postData = async (url='', data = {}) => {
     console.log('POST');
-    console.log(data);
     const response = await fetch(url, {
         method: 'POST',
         credentials: 'same-origin',
@@ -50,7 +48,7 @@ const postData = async (url='', data = {}) => {
 
     try {
         const newData = await response.json();
-        console.log(newData);
+        // console.log(newData);
         // console.log(newData);//problem seems to be around here, newData is coming back empty//
         return newData;
         
@@ -63,7 +61,7 @@ const updateUI= async(url ='')=>{
     const request = await fetch('/all')
         try{
             const allData = await request.json()
-            console.log(allData);
+            // console.log(allData);
             document.getElementById('date').innerHTML = 'Date: '+ allData.date;
             document.getElementById('temp').innerHTML = 'Temp: ' + allData.temp + '\u00B0 F';
             document.getElementById('content').innerHTML ='How I feel today: '+ allData.userInput;

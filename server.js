@@ -26,7 +26,7 @@ const server = app.listen(port, listening);
 function listening() {
   console.log(`server up and running on localhost:${port}`); // Callback to debug//
 }
-// let projectData = [];
+
 // Initialize all route with a callback function//
 app.get("/all", getData)
 
@@ -34,25 +34,22 @@ app.get("/all", getData)
 // Callback function to complete GET '/all'//
 function getData(req, res) {
   res.send(projectData);
-  console.log(projectData);
-  console.log('HelloWorld') 
 };
 
 // Post Route
 app.post('/addData', addData);
 
 function addData(req,res) {
-    console.log(req.body);
+    // console.log(req.body);
     newEntry= {
       temp: req.body.temp,
       date: req.body.date,
       userInput: req.body.input
     }  
     
-    console.log(newEntry);
+    // console.log(newEntry);
 
-    // projectData.push(newEntry)
     projectData = newEntry
     res.send(projectData)
-//   console.log(projectData)
+    console.log(projectData)
 }
