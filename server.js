@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-const projectData = {}
+projectData = {}
 
 // Express to run server and routes
 const express = require("express");
@@ -26,16 +26,15 @@ const server = app.listen(port, listening);
 function listening() {
   console.log(`server up and running on localhost:${port}`); // Callback to debug//
 }
-const appData = {};
-const weatherData = [];
+// let projectData = [];
 // Initialize all route with a callback function//
 app.get("/all", getData)
 
 
 // Callback function to complete GET '/all'//
 function getData(req, res) {
-  res.send(weatherData);
-  console.log(weatherData);
+  res.send(projectData);
+  console.log(projectData);
   console.log('HelloWorld') 
 };
 
@@ -49,9 +48,11 @@ function addData(req,res) {
       date: req.body.date,
       userInput: req.body.input
     }  
+    
     console.log(newEntry);
 
-    weatherData.push(newEntry)
-    res.send(weatherData)
-//   console.log(weatherData)
+    // projectData.push(newEntry)
+    projectData = newEntry
+    res.send(projectData)
+//   console.log(projectData)
 }

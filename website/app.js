@@ -3,7 +3,7 @@
 const endpoint = {};
 
 let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-let apiKey = '868d60b0f024eeb9e37e6857f607fb26';
+const apiKey = '868d60b0f024eeb9e37e6857f607fb26';
 
 //listen for 'click' and then run processInfo
 document.getElementById('generate').addEventListener('click', processInfo)
@@ -16,7 +16,10 @@ function processInfo(e){
     const userInput = document.getElementById("feelings").value;
     getWeather(baseURL, zipCode, apiKey)//get weather data//
     .then(function(data){//then post the data to the server//
-        postData('/addData', {temp:data.main.temp, date:newDate, input:userInput});
+        postData('/addData', {
+            temp:data.main.temp, 
+            date:newDate, 
+            input:userInput});
         updateUI()//this runs and updates the UI!//
     });
 };
@@ -61,9 +64,9 @@ const updateUI= async(url ='')=>{
         try{
             const allData = await request.json()
             console.log(allData);
-            document.getElementById('date').innerHTML = allData[0].date;
-            document.getElementById('temp').innerHTML = allData[0].temp + '\u00B0 F';
-            document.getElementById('content').innerHTML = allData[0].userInput;
+            document.getElementById('date').innerHTML = 'Date: '+ allData.date;
+            document.getElementById('temp').innerHTML = 'Temp: ' + allData.temp + '\u00B0 F';
+            document.getElementById('content').innerHTML ='How I feel today: '+ allData.userInput;
         }catch(error){
             console.log('error', error);
     }
